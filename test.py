@@ -1,14 +1,15 @@
-# Function to reverse a string
-def reverse_string(input_string):
-    return input_string[::-1]
+import os
 
-# Main function
+def reverse_string(s):
+    if not s:
+        raise ValueError("No input string provided")
+    return s[::-1]
+
 if __name__ == "__main__":
-    # Input string
-    input_string = input("Enter a string to reverse: ")
+    input_string = os.getenv('INPUT_STRING')
+    if input_string is None:
+        print("Error: INPUT_STRING environment variable not set")
+        exit(1)
     
-    # Reverse the string
-    reversed_string = reverse_string(input_string)
-    
-    # Print the reversed string
-    print("Reversed string:", reversed_string)
+    print(f"Original string: {input_string}")
+    print(f"Reversed string: {reverse_string(input_string)}")
